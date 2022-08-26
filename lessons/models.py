@@ -54,7 +54,6 @@ class LearningActivity(models.Model):
         verbose_name = 'Занятие'
         verbose_name_plural = 'Занятия'
         ordering = ('subjects',)
-        # дописать ограничения
         constraints = (
             models.UniqueConstraint(
                 fields=(
@@ -65,4 +64,7 @@ class LearningActivity(models.Model):
                 name='unique_lesson',
             ),
         )
+
+    def __str__(self):
+        return f'{self.teachers} ведет {self.subjects} в кабинетах номер {self.rooms}'
 

@@ -14,7 +14,7 @@ class User(AbstractUser):
         verbose_name='Квалификация',
         choices=QUALIFICATION_CHOICES,
         default=None,
-        blank=True
+        null=True
     )
     fullname = models.CharField(max_length=20, verbose_name='Фамилия, Имя', blank=False)
     is_teacher = models.BooleanField(default=False, verbose_name='Преподаватель')

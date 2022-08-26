@@ -4,8 +4,7 @@ from rest_framework.permissions import IsAdminUser, SAFE_METHODS
 
 from lessons.models import Class, LearningActivity, Subject
 from lessons.permissions import IsAdminOrReadOnly
-from lessons.serializers import TeacherSerializer, ClassSerializer, UserSerializer, LearningActivitySerializer, \
-    SubjectSerializer
+from lessons.serializers import TeacherSerializer, ClassSerializer, UserSerializer, SubjectSerializer
 from users.models import User
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -24,14 +23,14 @@ class ClassViewSet(viewsets.ModelViewSet):
     serializer_class = ClassSerializer
     permission_classes = (IsAdminOrReadOnly,)
 
-class LessonViewSet(viewsets.ModelViewSet):
-    queryset = LearningActivity.objects.all()
-    serializer_class = LearningActivitySerializer
-    # permission_classes = (IsAdminOrReadOnly,)
+# class LessonViewSet(viewsets.ModelViewSet):
+#     queryset = LearningActivity.objects.all()
+#     serializer_class = LearningActivitySerializer
+#     # permission_classes = (IsAdminOrReadOnly,)
 
-class SubjectViewSet(viewsets.ModelViewSet):
-    queryset = Subject.objects.all()
-    serializer_class = SubjectSerializer
-    permission_classes = (IsAdminOrReadOnly,)
+# class SubjectViewSet(viewsets.ModelViewSet):
+#     queryset = Subject.objects.all()
+#     serializer_class = SubjectSerializer
+#     permission_classes = (IsAdminOrReadOnly,)
 
 
