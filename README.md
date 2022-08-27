@@ -6,39 +6,56 @@ Login: admin@admin.ru
 Password: 1234
 
 
-## Описание проекта 
+## Endpoints:
+
+http://158.160.7.120/api/users/
+Список пользователей. Доступ только у администратора.
+
+http://158.160.7.120/api/users/{int:id}/
+Информация по id конкретного пользователя. Поддерживается изменение/удаление записи.
 
 
-## Запуск проекта в dev-режиме
 
-Установить и активировать виртуальное окружение:
+http://158.160.7.120/api/teachers/
+Список преподавателей.
+
+http://158.160.7.120/api/teachers/{int:id}/
+Информация по id конкретного преподавателя.
+
+
+
+http://158.160.7.120/api/rooms/
+Список всех помещений. Добавление помещения только для администратора
+
+
+http://158.160.7.120/api/rooms/{int:id}
+Информация по id конкретного помещения, а также удалени/изменение помещения.
+Доступ только у администратора
+
+
+
+## Запуск проекта через Docker
+- В папке infra выполнить команду, чтобы собрать контейнер:
+
 ```
-python -m venv venv
-source /venv/bin/activated
+sudo docker-compose up -d
 ```
 
-Установить зависимости из файла requirements.txt:
+Для доступа к контейнеру выполните следующие команды:
+
 ```
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+sudo docker-compose exec web python manage.py makemigrations
+```
+```
+sudo docker-compose exec web python manage.py migrate --noinput
+```
+```
+sudo docker-compose exec web python manage.py createsuperuser
+```
+```
+sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-Выполнить миграции:
-```
-python manage.py makemigrations
-
-python manage.py migrate
-```
-
-Создать суперпользователя:
-```
-python manage.py createsuperuser
-```
-
-В папке с файлом manage.py выполнить команду:
-```
-python manage.py runserver
-```
 
 ## Запуск проекта на сервере с помощью Docker
 
@@ -115,5 +132,5 @@ sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 Создать суперпользователя:
 ```
-sudo docker-compose exec backend python manage.py createsuperuser
+sudo docker-compose exec web python manage.py createsuperuser
 ```
