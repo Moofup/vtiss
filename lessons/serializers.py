@@ -30,9 +30,10 @@ class SubjectSerializer(serializers.ModelSerializer):
 
 
 class TeacherSerializer(serializers.ModelSerializer):
-    rooms = ClassSerializer(many=True)
+    # rooms = ClassSerializer(many=True)
+    rooms = serializers.StringRelatedField(many=True)
     subjects = SubjectSerializer(many=True)
 
     class Meta:
         model = User
-        fields = ('fullname', 'rooms', 'subjects')
+        fields = ('id', 'fullname', 'rooms', 'subjects')
