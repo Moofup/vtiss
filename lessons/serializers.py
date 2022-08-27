@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from lessons.models import Class, Subject, LearningActivity
+from lessons.models import Class, Subject
 from users.models import User
 
 
