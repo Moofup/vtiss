@@ -18,7 +18,7 @@ class ClassSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Class
-        fields = ('room_number',)
+        fields = ('id', 'room_number',)
 
 
 class SubjectSerializer(serializers.ModelSerializer):
@@ -26,7 +26,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subject
-        fields = ('subject_name',)
+        fields = ('id', 'subject_name',)
 
 
 class TeacherSerializer(serializers.ModelSerializer):

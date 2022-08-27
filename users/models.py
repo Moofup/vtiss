@@ -16,8 +16,13 @@ class User(AbstractUser):
         default=None,
         null=True
     )
-    fullname = models.CharField(max_length=20, verbose_name='Фамилия, Имя', blank=False)
-    is_teacher = models.BooleanField(default=False, verbose_name='Преподаватель')
+    fullname = models.CharField(
+        max_length=20, verbose_name='Фамилия, Имя',
+        blank=False
+    )
+    is_teacher = models.BooleanField(
+        default=False, verbose_name='Преподаватель'
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'fullname']

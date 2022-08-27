@@ -6,7 +6,10 @@ User = get_user_model()
 
 class Class(models.Model):
     name = models.CharField(max_length=15, verbose_name='Номер помещения')
-    teacher = models.ManyToManyField(User, through='LearningActivity', related_name='rooms')
+    teacher = models.ManyToManyField(
+        User, through='LearningActivity', related_name='rooms'
+    )
+
     class Meta:
         verbose_name = 'Помещение'
         verbose_name_plural = 'Помещения'
@@ -26,7 +29,10 @@ class Class(models.Model):
 
 class Subject(models.Model):
     name = models.CharField(max_length=20, verbose_name='Предмет')
-    teacher = models.ManyToManyField(User, through='LearningActivity', related_name='subjects')
+    teacher = models.ManyToManyField(
+        User, through='LearningActivity',
+        related_name='subjects'
+    )
 
     class Meta:
         verbose_name = 'Предмет'
@@ -46,9 +52,18 @@ class Subject(models.Model):
 
 
 class LearningActivity(models.Model):
-    teachers = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Преподаватель')
-    rooms = models.ForeignKey(Class, on_delete=models.CASCADE, verbose_name='Помещение')
-    subjects = models.ForeignKey(Subject, on_delete=models.CASCADE, verbose_name='Предмет')
+    teachers = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        verbose_name='Преподаватель'
+    )
+    rooms = models.ForeignKey(
+        Class, on_delete=models.CASCADE,
+        verbose_name='Помещение'
+    )
+    subjects = models.ForeignKey(
+        Subject, on_delete=models.CASCADE,
+        verbose_name='Предмет'
+    )
 
     class Meta:
         verbose_name = 'Занятие'
@@ -66,5 +81,8 @@ class LearningActivity(models.Model):
         )
 
     def __str__(self):
-        return f'{self.teachers} ведет {self.subjects} в кабинетах номер {self.rooms}'
-
+        return (
+            f'{self.teachers} '
+            f'ведет {self.subjects} '
+            f'в кабинетах номер {self.rooms}'
+        )
