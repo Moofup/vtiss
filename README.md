@@ -107,7 +107,7 @@ sudo docker-compose exec web python manage.py makemigrations
 ```
 ```
 sudo docker-compose exec web python manage.py migrate --noinput
-```
+``` 
 Собрать статику:
 ```
 sudo docker-compose exec web python manage.py collectstatic --no-input
